@@ -2,4 +2,4 @@
 - hosts: localhost
   remote_user: root
   roles:
-    - certbot-cloudflare
+    - certbot_cloudflare
