@@ -1,28 +1,42 @@
 galaxy_info:
-  role_name: certbot-cloudflare
+  role_name: certbot_cloudflare
   author: Michael Porter
-  description: your description
+  description: Ansible role for setting up wildcard certs with Certbot and Cloudflare DNS plugin
   license: "license (BSD, MIT)"
-  min_ansible_version: 2.4
+  min_ansible_version: "2.7"
   platforms:
+    - name: EL
+      versions:
+        - all
+    - name: Fedora
+      versions:
+        - all
+    - name: Debian
+      versions:
+        - all
     - name: Ubuntu
       versions:
-        - trusty
-        - xenial
+        - all
+    - name: GenericUNIX
+      versions:
+        - all
   galaxy_tags:
-    - cloudflare
-    - networking
-    - system
-    - web
+    - acme
     - certbot
-    - letsencrypt
-    - encryption
     - certificates
-    - ssl
+    - cloudflare
+    - encryption
     - https
+    - letsencrypt
+    - networking
+    - ssl
+    - system
+    - tls
+    - web
 
 dependencies:
-    - src: geerlingguy.pip
-      version: 1.2.2
-    - { role: geerlingguy.certbot, certbot_certs: [], version: 3.0.1 }
-      
+  - src: geerlingguy.pip
+    version: 2.1.0
+  - role: geerlingguy.certbot
+    certbot_certs: []
+    version: 5.0.1
