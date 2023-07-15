@@ -1,6 +1,11 @@
 ---
+# Your Cloudflare API key
+# ansible-vault encrypt_string 'CLOUDFLARE_API_TOKEN' --name 'certbot_cloudflare_api_token'
+certbot_cloudflare_api_token: ""
+
 # Email address for Cloudflare API key
 certbot_cloudflare_email: "cloudflare@example.com"
+
 # Your Cloudflare API key
 # ansible-vault encrypt_string 'CLOUDFLARE_API_KEY' --name 'certbot_cloudflare_api_key'
 certbot_cloudflare_api_key: ""
@@ -11,3 +16,5 @@ certbot_cloudflare_acme_test: "https://acme-staging-v02.api.letsencrypt.org/dire
 certbot_cloudflare_acme_live: "https://acme-v02.api.letsencrypt.org/directory"
 
 certbot_cloudflare_acme_server: "{{ certbot_cloudflare_acme_test }}"
+
+certbot_cloudflare_propagation_seconds: 10

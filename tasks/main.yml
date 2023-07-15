@@ -1,4 +1,9 @@
 ---
+- name: Cloudflare API parameters check
+  ansible.builtin.fail:
+    msg: "Only one of the variables certbot_cloudflare_api_token or certbot_cloudflare_api_key must be set"
+  when: certbot_cloudflare_api_token !='' and certbot_cloudflare_api_key !=''
+
 - name: Install certbot-dns-cloudflare plugin
   ansible.builtin.include_role:
     name: geerlingguy.pip
@@ -12,13 +17,13 @@
     dest: "{{ item.dest }}"
     owner: root
     group: root
-    mode: 0600
+    mode: "0600"
   with_items:
     - src: "templates/dns-cloudflare.ini.j2"
       dest: "/etc/letsencrypt/dns-cloudflare.ini"
     - src: "templates/certbot-cli.ini.j2"
       dest: "/etc/letsencrypt/cli.ini"
 
-- name: Create certs
+- name: Create certs (parent role)
   ansible.builtin.include_role:
     name: geerlingguy.certbot
